@@ -1,0 +1,13 @@
+DROP TABLE  almacenamientos;
+DROP TABLE  adquisiciones;
+DROP TABLE  compras;
+DROP TABLE  despachos;
+DROP TABLE  bodegas;
+DROP TABLE  proveedores;
+DROP TABLE  requerimientos;
+DROP TABLE  productos;
+DROP TABLE  categorias;
+DROP TABLE  pedidos;
+DROP TABLE  pagos;
+DROP TABLE  clientes;
+DROP TABLE  ubicaciones;

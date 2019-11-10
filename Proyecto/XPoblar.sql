@@ -1,0 +1,13 @@
+DELETE FROM  almacenamientos;
+DELETE FROM  adquisiciones;
+DELETE FROM  compras;
+DELETE FROM  despachos;
+DELETE FROM  bodegas;
+DELETE FROM  proveedores;
+DELETE FROM  requerimientos;
+DELETE FROM  productos;
+DELETE FROM  categorias;
+DELETE FROM  pedidos;
+DELETE FROM  pagos;
+DELETE FROM  clientes;
+DELETE FROM  ubicaciones;
