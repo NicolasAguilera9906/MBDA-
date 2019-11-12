@@ -94,7 +94,8 @@ categoria VARCHAR2(5)
 CREATE TABLE adquisiciones(
 producto VARCHAR2(5)NOT NULL,
 compra NUMBER(5)NOT NULL,
-cantidad NUMBER(10)NOT NULL
+cantidad NUMBER(10)NOT NULL,
+precio NUMBER (10) NOT NULL
 );
 CREATE TABLE compras(
 idCompra NUMBER(5)NOT NULL,

@@ -27,7 +27,7 @@ CHECK(
 ALTER TABLE productos 
 ADD CONSTRAINT CK_PRODUCTOS_PRECIO 
 CHECK(
-    precio>0
+    precio>0 and precio <= 9999999999
 );
 ALTER TABLE productos 
 ADD CONSTRAINT CK_PRODUCTOS_ID 
@@ -50,6 +50,12 @@ ALTER TABLE adquisiciones
 ADD CONSTRAINT CK_adquisiciones_PRODUCTO 
 CHECK(
     producto=UPPER(producto)and REGEXP_LIKE(producto,'^[A-Z0-9]*$')
+);
+
+ALTER TABLE adquisiciones 
+ADD CONSTRAINT CK_adquisiciones_PRECIO
+CHECK(
+    precio>0 and precio <= 9999999999
 );
 
 ALTER TABLE compras 
