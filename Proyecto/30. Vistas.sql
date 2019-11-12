@@ -1,5 +1,6 @@
 --vistas
 
+
 Create view Info_Productos AS
     SELECT 
         p.nombre,
