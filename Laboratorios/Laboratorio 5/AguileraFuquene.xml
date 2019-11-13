@@ -1,0 +1,88 @@
+
+
+1. ¿De cuáles departamentos se tiene información? 
+	/Course_Catalog/Department/@Code
+	/Course_Catalog/Department/Title
+	/Course_Catalog/Department/Title/text()
+
+2. ¿Cuál es la información del curso Introduction to Databases? 
+	/Course_Catalog/Department/Course[Title[text()="Introduction to Databases"]]
+	/Course_Catalog/Department/Course[Title[text()="Introduction to Databases"]]/@*
+	/Course_Catalog/Department/Course[Title[text()="Introduction to Databases"]]/*
+
+3. ¿Cuántos cursos están detallados? ¿Cuáles son? 
+	/Course_Catalog/Department/Course[Description[text()]]/Title/text()
+
+4. ¿Cuál es el total de inscripciones de los cursos? 
+	sum(/Course_Catalog/Department/Course[@Enrollment]/number(@Enrollment))
+	
+5. ¿De cuáles cursos no se conoce el número de inscritos?
+	/Course_Catalog/Department/Course[not(@Enrollment)]/Title/text()
+	
+6. ¿Cuáles cursos son iniciales (no tienen prerrequisitos)? [Nombre]
+	/Course_Catalog/Department/Course[not(Prerequisites)]/Title/text()
+	
+7. ¿Cuáles cursos son finales (no son prerrequisitos de ninguno)? [Nombre]
+    /Course_Catalog/Department/Course[not ((//Prereq/text())=@Number)] / Title
+	
+8. ¿Cuáles cursos tienen como instructores al director de su departamento?
+	/Course_Catalog/Department/Course[parent::*/Chair/Professor/Last_Name/text() = Instructors/Professor/Last_Name/text()]/Title/text()
+	
+9. ¿Cuáles cursos de un departamento tienen el mismo profesor? 
+	/Course_Catalog/Department/Course[/Instructors/Professor/@Last_Name = /following-sibling::*/Instructors/Professor/@Last_Name]/Title
+	
+10. ¿Cuáles directores de departamento no colaboran en cursos?[Toda la información] 
+	/Course_Catalog/Department/Chair[not(Professor/Last_Name/text() = parent::*/Course/Instructors/Professor/Last_Name/text())]/Professor/Last_Name/text()
+	
+/* B. Consultas quiz Standford */
+
+1. Return all Title elements (of both departments and courses). (16)
+	*//Title
+	
+2. Return last names of all department chairs. (3)
+	*//Chair/Professor/Last_Name/text()
+	
+3. Return titles of courses with enrollment greater than 500. (2)
+	*//Course[@Enrollment > 500]/Title
+
+4. Return titles of departments that have some course that takes "CS106B" as a prerequisite. (2)
+	/Course_Catalog/Department/Course[Prerequisites/Prereq/text()= "CS106B"]/Title
+
+5. Return last names of all professors or lecturers who use a middle initial. Don't worry about eliminating
+	duplicates. (5)
+	*//Course/Instructors/(Professor|Lecturer)[Middle_Initial]/Last_Name/text()
+	
+6. Return the title of courses that have a cross-listed course (i.e., that have "Cross-listed" in their
+	description). (2) 
+	/Course_Catalog/Department/Course[contains(Description/text(),"Cross-listed")]/Title/text()
+
+7. Return the enrollment of all courses in the CS department. (10)
+	*//Department[@Code="CS"]/Course/@Enrollment
+
+8. Return last names of instructors teaching at least one course that has "system" in its description and
+	enrollment greater than 100. (2)
+	*//Course[@Enrollment>100 and contains(Description,"system")]/Instructors//Last_Name
+
+9.  Return the title of the course with more than 2 instructors (*)(1)
+	*//Course[count(Instructors/*)>2]/Title
+	
+10. . Return course numbers of courses that have the same title as some other course. (Hint: You might want to
+	use the "preceding" and "following" navigation axes for this query, which were not covered in the video or
+	our demo script; they match any preceding or following node, not just siblings.) (2)
+	*//Course[(following::Course/Title = Title) or (preceding::Course/Title = Title)]/@Number
+	
+11.  Return the courses numbers of courses that have no lecturers as instructors. (*)(10)
+	*//Course[Instructors[count(Lecturer)=0]]/@Number
+
+12. Return titles of courses taught by the chair of a department. For this question, you may assume that all professors have distinct last names. (1)
+	/Course_Catalog/Department/Course[parent::*/Chair/Professor/Last_Name/text() = Instructors/Professor/Last_Name/text()]/Title/text()
+	
+13. Return titles of courses taught by a professor with the last name "Ng" and by a professor with the last
+	name "Thrun". (*)(1)
+	*//Course[Instructors/Professor[Last_Name/text()="Ng"or text()="Thrun"]]/Title/text()
+	
+14. Return course numbers of courses that have a course taught by Eric Roberts as a prerequisite. (4)
+	
+	
+
+	
