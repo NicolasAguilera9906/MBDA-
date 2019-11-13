@@ -82,7 +82,150 @@
 	*//Course[Instructors/Professor[Last_Name/text()="Ng"or text()="Thrun"]]/Title/text()
 	
 14. Return course numbers of courses that have a course taught by Eric Roberts as a prerequisite. (4)
-	
-	
 
+	*//Course[Prerequisites/Prereq/text()=/*//Course[Instructors/Professor[First_Name/text()="Eric"and Last_Name/text()="Roberts"]]/@Number]/@Number
+
+15. Return last names of instructors teachiing at least one course that has system in its description and
+	enrollment greater than 100.(2)
 	
+	*//Course[contains(Description,"system")and @Enrollment>100]/Instructors//Last_Name/text()
+	
+D.Esquema
+
+/*<?xml version="1.0"?>
+
+<!DOCTYPE Courses[
+	<!ELEMENT Course_Catalog (Departments)>
+	<!ELEMENT Departments (Department)>
+	<!ELEMENT Department (Title,Chairs,Courses)>
+	<!ELEMENT Title (#PCDATA) >
+	<!ELEMENT Chairs (Chair)>
+	<!ELEMENT Chair (Professors)>
+	<!ELEMENT Professors (Professor)>
+	<!ELEMENT Professor (First_Name,Middle_Initial,Last_Name)>
+	<!ELEMENT First_Name (#PCDATA)>
+	<!ELEMENT Middle_Initial (#PCDATA)>
+	<!ELEMENT Last_Name (#PCDATA)>
+	<!ELEMENT Courses (Course)>
+	<!ELEMENT Course (Title,Description,Instructors,Prerequisites)>
+	<!ELEMENT Description (#PCDATA) >
+	<!ELEMENT Instructors (Lecturers,Professors)>
+	<!ELEMENT Lecturers (Lecturer)>
+	<!ELEMENT Lecturer (First_Name,Middle_Initial,Last_Name)>
+	<!ELEMENT Prerequisites (Prereq)>
+	<!ELEMENT Prereq (#PCDATA) >
+	<!ATTLIST Department Code ID #REQUIRED>
+	<!ATTLIST Course Number ID #REQUIRED
+			  Enrollment CDATA #IMPLIED>
+]>*/
+
+E.Nuevos datos
+
+<?xml version="1.0"?>
+
+<!DOCTYPE Course_Catalog[
+	<!ELEMENT Course_Catalog (Departments)>
+	<!ELEMENT Departments (Department)+>
+	<!ELEMENT Department (Title,Chairs,Courses)>
+	<!ELEMENT Title (#PCDATA) >
+	<!ELEMENT Chairs (Chair)>
+	<!ELEMENT Chair (Professors)>
+	<!ELEMENT Professors (Professor)>
+	<!ELEMENT Professor (First_Name,Middle_Initial?,Last_Name)>
+	<!ELEMENT First_Name (#PCDATA)>
+	<!ELEMENT Middle_Initial (#PCDATA)>
+	<!ELEMENT Last_Name (#PCDATA)>
+	<!ELEMENT Courses (Course)+>
+	<!ELEMENT Course (Title,Description,Instructors,Prerequisites)>
+	<!ELEMENT Description (#PCDATA) >
+	<!ELEMENT Instructors (Lecturer | Professor)+>
+	<!ELEMENT Lecturers (Lecturer)>
+	<!ELEMENT Lecturer (First_Name,Middle_Initial,Last_Name)>
+	<!ELEMENT Prerequisites (Prereq)+>
+	<!ELEMENT Prereq (#PCDATA) >
+	<!ATTLIST Department Code ID #REQUIRED>
+	<!ATTLIST Course Number ID #REQUIRED
+			  Enrollment CDATA #IMPLIED>
+]>
+
+
+<Course_Catalog>
+<Departments>
+<Department Code="AYED">
+<Title>Algoritmos y Estructuras de Datos</Title>
+<Chairs>
+<Chair>
+<Professors>
+<Professor>
+<First_Name>Irma</First_Name>
+<Last_Name>Diaz</Last_Name>
+</Professor>
+</Professors>
+</Chair>
+</Chairs>
+<Courses>
+<Course Number="D-203" Enrollment="23">
+<Title>Algoritmos y Estructuras de Datos</Title>
+<Description>
+Introduction to the engineering of computer applications emphasizing in modilar programming.
+</Description>
+<Instructors>
+<Professor>
+<First_Name>Sebastian</First_Name>
+<Last_Name>Martinez</Last_Name>
+</Professor>
+</Instructors>
+<Prerequisites>
+<Prereq>AYPR</Prereq>
+<Prereq>MMIN</Prereq>
+</Prerequisites>
+</Course>
+<Course Number="C4-102" Enrollment="21">
+<Title>Algoritmos y Estructuras de Datos</Title>
+<Description>
+Introduction to the engineering of computer applications emphasizing in modilar programming.
+</Description>
+<Instructors>
+<Professor>
+<First_Name>Guillermo</First_Name>
+<Last_Name>Alvarez</Last_Name>
+</Professor>
+</Instructors>
+<Prerequisites>
+<Prereq>AYPR</Prereq>
+<Prereq>MMIN</Prereq>
+</Prerequisites>
+</Course>
+</Courses>
+</Department>
+<Department Code="TPRO">
+<Title>Teoría de la Programación</Title>
+<Chairs>
+<Chair>
+<Professors>
+<Professor>
+<First_Name>Raul</First_Name>
+<Middle_Initial>A.</Middle_Initial>
+<Last_Name>Chaparro</Last_Name>
+</Professor>
+</Professors>
+</Chair>
+</Chairs>
+<Courses>
+<Course Number="C7-203">
+<Title>Teoría de la Programación</Title>
+<Description>logical matter</Description>
+<Instructors>
+<Professor>
+<First_Name>Raul</First_Name>
+<Last_Name>Chaparro</Last_Name>
+</Professor>
+</Instructors>
+<Prerequisites>
+<Prereq>MATD</Prereq>
+</Prerequisites>
+</Course>
+</Courses>
+</Department>
+</Departments>
+</Course_Catalog>
