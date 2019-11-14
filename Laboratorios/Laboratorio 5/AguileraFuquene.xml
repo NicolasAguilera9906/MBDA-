@@ -240,106 +240,79 @@ registro. DTD y ejemplos XML OK y XML NoOK. Explique.
 <?xml version="1.0"?>
 
 <!DOCTYPE Detalles_Registro[
-
 <!ELEMENT Detalles_Registro (Registro) >
-<!ELEMENT Registro (Segmento , Persona , Revision , Comentario , Version , Carrera ) >
-<!ELEMENT Revision (#PCDATA) >
-<!ELEMENT Comentario (#PCDATA) >
-<!ELEMENT Segmento (Puntos) >
-<!ELEMENT Version (#PCDATA) >
-<!ELEMENT Puntos (Punto_Inicial , Punto_Final) >
-<!ELEMENT Carrera (#PCDATA) >
-<!ELEMENT Punto_Final (#PCDATA) >
-<!ELEMENT Punto_Inicial (#PCDATA) >
-<!ELEMENT Persona (Ciclista) >
-<!ELEMENT Ciclista (#PCDATA) >
-
-<!ATTLIST Registro numero ID #REQUIRED
-		  fecha CDATA #REQUIRED
-		  tiempo CDATA #REQUIRED
-		  posicion CDATA  #REQUIRED
-		  dificultad ( A | M | B ) #REQUIRED >
-<!ATTLIST Segmento nombre ID #REQUIRED 
-		  tipo ( C | M | L ) #REQUIRED
-		  version IDREF #REQUIRED>
-<!ATTLIST Punto_Inicial idPunto ID #REQUIRED 
-	      nombre CDATA #REQUIRED
-		  tipo (P | L | H | A | M | V | C ) #REQUIRED
-		  distancia CDATA #REQUIRED
-		  tiempoLimite CDATA #REQUIRED 
-		  carrera IDREF #REQUIRED >
-<!ATTLIST Punto_Final idPunto ID #REQUIRED 
-	      nombre CDATA #REQUIRED
-		  tipo (P | L | H | A | M | V | C ) #REQUIRED
-		  distancia CDATA #REQUIRED
-		  tiempoLimite CDATA #REQUIRED 
-		  carrera IDREF #REQUIRED >
-<!ATTLIST Version idVersion ID #REQUIRED
-		  nombre CDATA #REQUIRED
-		  fecha CDATA #REQUIRED
-		  carrera IDREF #REQUIRED >
-<!ATTLIST Carrera codigo ID #REQUIRED 
-		  nombre CDATA #REQUIRED 
-		  pais CDATA #REQUIRED
-		  categoria ( 1 | 2 | 3 | 4 | 5 ) #REQUIRED
-		  periodicidad ( A | S) #REQUIRED>
-<!ATTLIST Persona id CDATA #REQUIRED
-		  nombres CDATA #REQUIRED 
-		  >
-<!ATTLIST Ciclista nacimiento CDATA #REQUIRED 
-		  categoria ( 1 | 2 | 3 | 4 | 5 ) #REQUIRED >
+<!ELEMENT Registro (Revision? , Fotos) >
+<!ELEMENT Fotos (Foto) >
+<!ELEMENT Foto (#PCDATA) >
+<!ELEMENT Revision ( Secciones )>
+<!ELEMENT Secciones ( Sduras*, Sfaciles*, Sdescenso* )>
+<!ELEMENT Sduras (#PCDATA) >
+<!ELEMENT Sfaciles (#PCDATA) >				  
+<!ELEMENT Sdescenso (#PCDATA) >			  
+<!ATTLIST Sduras
+           kilometroInicial CDATA #REQUIRED
+		   kilometrofinal CDATA #REQUIRED
+		   velocidadPromedio CDATA #REQUIRED
+		   velocidadMinima CDATA #REQUIRED
+		   velocidadMaxima CDATA #REQUIRED
+		   pulsacionesPromedio CDATA #REQUIRED
+		   potenciaPromedio CDATA #REQUIRED>
+<!ATTLIST Sfaciles
+           kilometroInicial CDATA #REQUIRED
+		   kilometrofinal CDATA #REQUIRED
+		   velocidadPromedio CDATA #REQUIRED
+		   velocidadMinima CDATA #REQUIRED
+		   velocidadMaxima CDATA #REQUIRED
+		   pulsacionesPromedio CDATA #REQUIRED
+		   potenciaPromedio CDATA #REQUIRED>
+<!ATTLIST Sdescenso
+          kilometroInicial CDATA #REQUIRED
+		  kilometrofinal CDATA #REQUIRED
+		  velocidadPromedio CDATA #REQUIRED
+		  velocidadMinima CDATA #REQUIRED
+		  velocidadMaxima CDATA #REQUIRED
+		  pulsacionesPromedio CDATA #REQUIRED
+		  potenciaPromedio CDATA #REQUIRED>
+<!ATTLIST Foto direccion CDATA #REQUIRED >
 ]>	
-
 <Detalles_Registro>
-	<Registro
-		numero = "R1"
-		fecha = "06/10/2005"
-		tiempo = "5"
-		posicion = "10"
-		dificultad = "A">
-		<Segmento
-			nombre = "SE001"
-			tipo = "M"
-			version = "VE001">
-			<Puntos>
-				<Punto_Inicial
-					idPunto = "P-10" 
-					nombre = "PuntoI"
-					tipo = "M"
-					distancia = "10"
-					tiempoLimite = "5"
-					carrera = "C001">
-				</Punto_Inicial>
-				<Punto_Final
-					idPunto = "P-11"
-					nombre = "Puntof"
-					tipo = "M"
-					distancia = "10"
-					tiempoLimite = "5"
-					carrera = "C001">
-				</Punto_Final>
-			</Puntos>
-		</Segmento>
-		<Persona id = "D-1014308690">
-			<Ciclista
-				nacimiento = "06/10/1999"
-				categoria = "1" >
-			</Ciclista>
-		</Persona>
-		<Revision> Secciones de descenso del segmento</Revision>
-		<Comentario>Dificil</Comentario>
-		<Version
-			idVersion = "VE001"
-			nombre = "2019-1"
-			carrera = "C001">
-		</Version>
-		<Carrera
-			codigo = "C001"
-			nombre = "Tour de Francia"
-			pais = "FRANCIA"
-			categoria = "1"
-			periodicidad = "A">
-		</Carrera>
+	<Registro>
+		<Revision>
+			<Secciones>
+				<Sduras
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sduras>
+				<Sfaciles
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sfaciles>
+				<Sdescenso
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sdescenso>
+			</Secciones>
+		</Revision>
+		<Fotos>
+			<Foto
+				direccion = "www.google.gif">
+			</Foto>
+		</Fotos>
 	</Registro>
 </Detalles_Registro>
 
@@ -347,45 +320,293 @@ registro. DTD y ejemplos XML OK y XML NoOK. Explique.
 
 <Detalles_Registro>
 	<Registro
-		numero = "R1"
-		fecha = "06/10/2005"
+		numero = "1"        
+		fecha = "07/10/2019"
 		tiempo = "5"
 		posicion = "10"
-		dificultad = "A">
-		<Segmento
-			nombre = "SE001"
-			tipo = "M"
-			version = "VE001">
-			<Puntos>
-			    <!-- Debe haber un punto inicial obligatoriamente -->
-				<Punto_Final <!-- Hacen falta atributos del punto -->
-					idPunto = "11"  <!-- Un ID no puede comenzar por un numero -->
-					nombre = "Puntof"
-					carrera = "C001">
-				</Punto_Final>
-			</Puntos>
-		</Segmento>
-		<Persona > <!-- La persona debe tener un ID obligatoriamente-->
-			<Ciclista
-				nacimiento = "06/10/1999"
-				categoria = "1" >
-			</Ciclista>
-		</Persona>
-		<Revision> Secciones de descenso del segmento</Revision>
-		<Comentario>Dificil</Comentario>
-		<Version
-			idVersion = "VE001"
-			nombre = "2019-1"
-			carrera = "C001">
-		</Version>
-        <!-- Debe haber una carrera obligatoriamente -->
+		<!--- Hace falta el atributo dificultad  -->
+		<Revision>
+			<Secciones>
+				<Sduras
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					<!--- Hacen falta atributos que son requeridos -->
+				</Sduras>
+				<Sfaciles
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sfaciles>
+				<Sdescenso
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sdescenso>
+			</Secciones>
+		</Revision>
+		<Fotos>
+			<Foto
+				direccion = "www.google.gif">
+			</Foto>
+		</Fotos>
 	</Registro>
 </Detalles_Registro>
 
 2) Actualice la tabla y los datos adicionados a la base de datos. (PoblandoOK,
 ProblandoNoOK)
 
-INSERT INTO Registros Values ( 1 , TO_DATE ( '06/10/2005' , 'DD/MM/YYYY') , 5 , 10 , 'A' , ...);
+INSERT INTO Carreras VALUES ( 'C001' , 'Tour de Francia' , 'FRANCIA' ,  1 , 'A');
+INSERT INTO Carreras VALUES ( 'C002' , 'Giro de Italia' , 'ITALIA' ,  1 , 'A');
+INSERT INTO Versiones VALUES ( 1 , '20191' , TO_DATE ('06/10/2019' , 'DD/MM/YYYY'), 'C001');
+INSERT INTO Versiones VALUES ( 2 , '20192' , TO_DATE ('06/10/2019' , 'DD/MM/YYYY'), 'C002');
+INSERT INTO Personas VALUES ( 1014 , 'Nicolas');
+INSERT INTO Ciclistas VALUES (1014 , TO_DATE ('06/10/1999' , 'DD/MM/YYYY'), 1 );
+INSERT INTO Puntos VALUES ('P-10', 10 , 'PuntoI' ,'M' , 10 , 5 , 'C001');
+INSERT INTO Puntos VALUES ('P-11', 11 , 'PuntoF' ,'M' , 10 , 5 , 'C001');
+INSERT INTO Segmentos VALUES ('SE001' , 'M' , 'P-10' , 'P-11' , 1);
+INSERT INTO Segmentos VALUES ('SE002' , 'M' , 'P-10' , 'P-11' , 2);
+INSERT INTO Registros VALUES  ( 1 , TO_DATE ('07/10/2019' , 'DD/MM/YYYY') , 5 , 10 , 'Secciones de descenso del segmento' , 'A' , 'Dificil', 1014 , 'SE001' ,  1 , '<Detalles_Registro>
+	<Registro>
+		<Revision>
+			<Secciones>
+				<Sduras
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sduras>
+				<Sfaciles
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sfaciles>
+				<Sdescenso
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sdescenso>
+			</Secciones>
+		</Revision>
+		<Fotos>
+			<Foto
+				direccion = "www.google.gif">
+			</Foto>
+		</Fotos>
+	</Registro>
+</Detalles_Registro>');
+
+INSERT INTO Registros VALUES  ( 2 , TO_DATE ('07/10/2019' , 'DD/MM/YYYY') , 10 , 20 , 'Secciones de descenso del segmento' , 'A' , 'Dificiles', 1014 , 'SE002' ,  1 , '<Detalles_Registro>
+	<Registro>
+		<Revision>
+			<Secciones>
+				<Sduras
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sduras>
+				<Sfaciles
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "60"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sfaciles>
+				<Sdescenso
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "70"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sdescenso>
+			</Secciones>
+		</Revision>
+		<Fotos>
+			<Foto
+				direccion = "www.google.gif">
+			</Foto>
+		</Fotos>
+	</Registro>
+</Detalles_Registro>');
+
+INSERT INTO Registros VALUES  ( 3 , TO_DATE ('07/10/2019' , 'DD/MM/YYYY') , 20 , 30 , 'Secciones de descenso del segmento' , 'A' , 'Facil', 1014 , 'SE001' ,  1 , '<Detalles_Registro>
+	<Registro>
+		<Revision>
+			<Secciones>
+				<Sduras
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sduras>
+				<Sfaciles
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "50"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sfaciles>
+				<Sdescenso
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "120"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sdescenso>
+			</Secciones>
+		</Revision>
+		<Fotos>
+			<Foto
+				direccion = "www.google.gif">
+			</Foto>
+		</Fotos>
+	</Registro>
+</Detalles_Registro>');
+
+2.3 
+
+SELECT v.nombre as version ,s.nombre as segmento , min (EXTRACTVALUE(r.detalle,'*//Revision/Secciones/Sdescenso/@velocidadMaxima')) as vMaxima , count (r.numero) as hola 
+FROM  Carreras c , Versiones v , Segmentos s , Registros r
+WHERE s.nombre = r.segmento
+    AND s.version = v.id_version
+    AND v.carrera = c.codigo
+GROUP BY v.nombre  ,s.nombre;
+
+2.4
+
+<?xml version="1.0"?>
+
+<!DOCTYPE Detalles_Registro[
+<!ELEMENT Detalles_Registro (Registro) >
+<!ELEMENT Registro (Revision? , Fotos) >
+<!ELEMENT Fotos (Foto) >
+<!ELEMENT Foto (#PCDATA) >
+<!ELEMENT Revision ( Secciones  , Clima , Equipo)>
+<!ELEMENT Equipo (Descripcion) >
+<!ELEMENT Descripcion (#PCDATA) >
+<!ELEMENT Clima (#PCDATA) >
+<!ELEMENT Secciones ( Sduras*, Sfaciles*, Sdescenso* )>
+<!ELEMENT Sduras (#PCDATA) >
+<!ELEMENT Sfaciles (#PCDATA) >				  
+<!ELEMENT Sdescenso (#PCDATA) >			  
+<!ATTLIST Sduras
+           kilometroInicial CDATA #REQUIRED
+		   kilometrofinal CDATA #REQUIRED
+		   velocidadPromedio CDATA #REQUIRED
+		   velocidadMinima CDATA #REQUIRED
+		   velocidadMaxima CDATA #REQUIRED
+		   pulsacionesPromedio CDATA #REQUIRED
+		   potenciaPromedio CDATA #REQUIRED>
+<!ATTLIST Sfaciles
+           kilometroInicial CDATA #REQUIRED
+		   kilometrofinal CDATA #REQUIRED
+		   velocidadPromedio CDATA #REQUIRED
+		   velocidadMinima CDATA #REQUIRED
+		   velocidadMaxima CDATA #REQUIRED
+		   pulsacionesPromedio CDATA #REQUIRED
+		   potenciaPromedio CDATA #REQUIRED>
+<!ATTLIST Sdescenso
+          kilometroInicial CDATA #REQUIRED
+		  kilometrofinal CDATA #REQUIRED
+		  velocidadPromedio CDATA #REQUIRED
+		  velocidadMinima CDATA #REQUIRED
+		  velocidadMaxima CDATA #REQUIRED
+		  pulsacionesPromedio CDATA #REQUIRED
+		  potenciaPromedio CDATA #REQUIRED>
+<!ATTLIST Foto direccion CDATA #REQUIRED >
+<!ATTLIST Equipo nombre CDATA #REQUIRED 
+				 fechaDeFundacion CDATA #REQUIRED>
+<!ATTLIST Clima temperaturaPromedio CDATA #REQUIRED 
+                sensacionTermica CDATA #REQUIRED 
+				tipo ( calido | templado | frio ) #REQUIRED >				 
+]>	
+<Detalles_Registro>
+	<Registro>
+		<Revision>
+			<Secciones>
+				<Sduras
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sduras>
+				<Sfaciles
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sfaciles>
+				<Sdescenso
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sdescenso>
+			</Secciones>
+			<Clima
+				temperaturaPromedio = "30"
+        sensacionTermica = "20"
+				tipo = "calido">
+			</Clima>
+			<Equipo
+				nombre = "INEOS" 
+				fechaDeFundacion = "06/10/1950"
+				>
+			<Descripcion> Sin esfuerzo no lograras tus metas </Descripcion>
+			</Equipo>
+		</Revision>
+		<Fotos>
+			<Foto
+				direccion = "www.google.gif">
+			</Foto>
+		</Fotos>
+	</Registro>
+</Detalles_Registro>
+
+
+
 
 
 
