@@ -229,3 +229,102 @@ Introduction to the engineering of computer applications emphasizing in modilar 
 </Department>
 </Departments>
 </Course_Catalog>
+
+
+
+PUNTO DOS. (XML – Oracle) AfterRide. TRevisión
+
+Este punto vamos a perfeccionar uno de los atributos de la base de datos.
+1) Proponga la estructura XML necesaria para tener la información de la revisión de un
+registro. DTD y ejemplos XML OK y XML NoOK. Explique.
+
+<?xml version="1.0"?>
+
+<!DOCTYPE Detalles_Registro[
+
+<!ELEMENT Detalles_Registro (Registro) >
+<!ELEMENT Registro (Segmento , Persona , revision , comentario , Version , Carrera ) >
+<!ELEMENT Revision (#PCDATA) >
+<!ELEMENT Comentario (#PCDATA) >
+<!ELEMENT Segmento (Puntos) >
+<!ELEMENT Version EMPTY>
+<!ELEMENT Puntos (Punto_Inicial , Punto_Final) >
+<!ELEMENT Carrera EMPTY >
+<!ELEMENT Punto_Final EMPTY >
+<!ELEMENT Punto_Inicial EMPTY>
+<!ELEMENT Persona (Ciclista) >
+<!ELEMENT Ciclista EMPTY >
+
+<!ATTLIST Registro numero ID #REQUIRED
+		  fecha CDATA #REQUIRED
+		  tiempo CDATA #REQUIRED
+		  posicion CDATA  #REQUIRED
+		  dificultad ( A | M | B ) #REQUIRED >
+<!ATTLIST Segmento nombre ID #REQUIRED 
+		  tipo ( C | M | L ) #REQUIRED 
+<!ATTLIST Punto_Inicial idPunto ID #REQUIRED 
+	      nombre CDATA #REQUIRED
+		  carrera IDREF #REQUIRED >
+<!ATTLIST Punto_Final idPunto ID #REQUIRED 
+	      nombre CDATA #REQUIRED
+		  carrera IDREF #REQUIRED >
+<!ATTLIST Version idVersion ID #REQUIRED
+		  nombre CDATA #REQUIRED
+		  fecha CDATA #REQUIRED
+		  carrera IDREF #REQUIRED >
+<!ATTLIST Carrera codigo ID #REQUIRED 
+		  nombre CDATA #REQUIRED >
+<!ATTLIST id CDATA #REQUIRED
+		  Persona nombres CDATA #REQUIRED 
+		  >
+<!ATTLIST Ciclista nacimiento CDATA #REQUIRED 
+		  categoria ( 1 | 2 | 3 | 4 | 5 ) #REQUIRED >
+]>	
+
+<Detalles_Registro>
+	<Registro
+		numero = "R1"
+		fecha = "06/10/2005"
+		tiempo = "5"
+		posicion = "10"
+		dificultad = "A">
+		<Segmento
+			nombre = "SE001"
+			tipo = "M"
+			<Puntos>
+				<Punto_Inicial
+					idPunto = "10"
+					nombre = "Punto inicial"
+					carrera = "C001">
+				</Punto_Inicial>
+				<Punto_Final
+					idPunto = "10"
+					nombre = "Punto inicial"
+					carrera = "C001">
+				</Punto_Final>
+			</Puntos>
+		</Segmento>
+		<Persona id = "D-1014308690">
+			<Ciclista
+				nacimiento = "06/10/1999"
+				categoria = "1" >
+			</Ciclista>
+		</Persona>
+		<Revision> Secciones de descenso del segmento</Revision>
+		<Comentario>Dificil</Comentario>
+		<Version
+			idVersion = "VE001"
+			nombre = "2019-1"
+			carrera = "C001">
+		</Version>
+		<Carrera
+			codigo = "C001"
+			nombre = "Tour de Francia">
+		</Carrera>
+	</Registro>
+</Detalles_Registro>
+	
+		
+
+
+
