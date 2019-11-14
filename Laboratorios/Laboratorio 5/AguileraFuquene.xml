@@ -234,7 +234,6 @@ Introduction to the engineering of computer applications emphasizing in modilar 
 
 PUNTO DOS. (XML – Oracle) AfterRide. TRevisión
 
-Este punto vamos a perfeccionar uno de los atributos de la base de datos.
 1) Proponga la estructura XML necesaria para tener la información de la revisión de un
 registro. DTD y ejemplos XML OK y XML NoOK. Explique.
 
@@ -243,17 +242,17 @@ registro. DTD y ejemplos XML OK y XML NoOK. Explique.
 <!DOCTYPE Detalles_Registro[
 
 <!ELEMENT Detalles_Registro (Registro) >
-<!ELEMENT Registro (Segmento , Persona , revision , comentario , Version , Carrera ) >
+<!ELEMENT Registro (Segmento , Persona , Revision , Comentario , Version , Carrera ) >
 <!ELEMENT Revision (#PCDATA) >
 <!ELEMENT Comentario (#PCDATA) >
 <!ELEMENT Segmento (Puntos) >
-<!ELEMENT Version EMPTY>
+<!ELEMENT Version (#PCDATA) >
 <!ELEMENT Puntos (Punto_Inicial , Punto_Final) >
-<!ELEMENT Carrera EMPTY >
-<!ELEMENT Punto_Final EMPTY >
-<!ELEMENT Punto_Inicial EMPTY>
+<!ELEMENT Carrera (#PCDATA) >
+<!ELEMENT Punto_Final (#PCDATA) >
+<!ELEMENT Punto_Inicial (#PCDATA) >
 <!ELEMENT Persona (Ciclista) >
-<!ELEMENT Ciclista EMPTY >
+<!ELEMENT Ciclista (#PCDATA) >
 
 <!ATTLIST Registro numero ID #REQUIRED
 		  fecha CDATA #REQUIRED
@@ -261,21 +260,31 @@ registro. DTD y ejemplos XML OK y XML NoOK. Explique.
 		  posicion CDATA  #REQUIRED
 		  dificultad ( A | M | B ) #REQUIRED >
 <!ATTLIST Segmento nombre ID #REQUIRED 
-		  tipo ( C | M | L ) #REQUIRED 
+		  tipo ( C | M | L ) #REQUIRED
+		  version IDREF #REQUIRED>
 <!ATTLIST Punto_Inicial idPunto ID #REQUIRED 
 	      nombre CDATA #REQUIRED
+		  tipo (P | L | H | A | M | V | C ) #REQUIRED
+		  distancia CDATA #REQUIRED
+		  tiempoLimite CDATA #REQUIRED 
 		  carrera IDREF #REQUIRED >
 <!ATTLIST Punto_Final idPunto ID #REQUIRED 
 	      nombre CDATA #REQUIRED
+		  tipo (P | L | H | A | M | V | C ) #REQUIRED
+		  distancia CDATA #REQUIRED
+		  tiempoLimite CDATA #REQUIRED 
 		  carrera IDREF #REQUIRED >
 <!ATTLIST Version idVersion ID #REQUIRED
 		  nombre CDATA #REQUIRED
 		  fecha CDATA #REQUIRED
 		  carrera IDREF #REQUIRED >
 <!ATTLIST Carrera codigo ID #REQUIRED 
-		  nombre CDATA #REQUIRED >
-<!ATTLIST id CDATA #REQUIRED
-		  Persona nombres CDATA #REQUIRED 
+		  nombre CDATA #REQUIRED 
+		  pais CDATA #REQUIRED
+		  categoria ( 1 | 2 | 3 | 4 | 5 ) #REQUIRED
+		  periodicidad ( A | S) #REQUIRED>
+<!ATTLIST Persona id CDATA #REQUIRED
+		  nombres CDATA #REQUIRED 
 		  >
 <!ATTLIST Ciclista nacimiento CDATA #REQUIRED 
 		  categoria ( 1 | 2 | 3 | 4 | 5 ) #REQUIRED >
@@ -291,15 +300,22 @@ registro. DTD y ejemplos XML OK y XML NoOK. Explique.
 		<Segmento
 			nombre = "SE001"
 			tipo = "M"
+			version = "VE001">
 			<Puntos>
 				<Punto_Inicial
-					idPunto = "10"
-					nombre = "Punto inicial"
+					idPunto = "P-10" 
+					nombre = "PuntoI"
+					tipo = "M"
+					distancia = "10"
+					tiempoLimite = "5"
 					carrera = "C001">
 				</Punto_Inicial>
 				<Punto_Final
-					idPunto = "10"
-					nombre = "Punto inicial"
+					idPunto = "P-11"
+					nombre = "Puntof"
+					tipo = "M"
+					distancia = "10"
+					tiempoLimite = "5"
 					carrera = "C001">
 				</Punto_Final>
 			</Puntos>
@@ -319,12 +335,95 @@ registro. DTD y ejemplos XML OK y XML NoOK. Explique.
 		</Version>
 		<Carrera
 			codigo = "C001"
-			nombre = "Tour de Francia">
+			nombre = "Tour de Francia"
+			pais = "FRANCIA"
+			categoria = "1"
+			periodicidad = "A">
 		</Carrera>
 	</Registro>
 </Detalles_Registro>
-	
-		
+
+/* XML NO OK */
+
+<Detalles_Registro>
+	<Registro
+		numero = "R1"
+		fecha = "06/10/2005"
+		tiempo = "5"
+		posicion = "10"
+		dificultad = "A">
+		<Segmento
+			nombre = "SE001"
+			tipo = "M"
+			version = "VE001">
+			<Puntos>
+			    <!-- Debe haber un punto inicial obligatoriamente -->
+				<Punto_Final <!-- Hacen falta atributos del punto -->
+					idPunto = "11"  <!-- Un ID no puede comenzar por un numero -->
+					nombre = "Puntof"
+					carrera = "C001">
+				</Punto_Final>
+			</Puntos>
+		</Segmento>
+		<Persona > <!-- La persona debe tener un ID obligatoriamente-->
+			<Ciclista
+				nacimiento = "06/10/1999"
+				categoria = "1" >
+			</Ciclista>
+		</Persona>
+		<Revision> Secciones de descenso del segmento</Revision>
+		<Comentario>Dificil</Comentario>
+		<Version
+			idVersion = "VE001"
+			nombre = "2019-1"
+			carrera = "C001">
+		</Version>
+        <!-- Debe haber una carrera obligatoriamente -->
+	</Registro>
+</Detalles_Registro>
+
+2) Actualice la tabla y los datos adicionados a la base de datos. (PoblandoOK,
+ProblandoNoOK)
+
+INSERT INTO Registros Values ( 1 , TO_DATE ( '06/10/2005' , 'DD/MM/YYYY') , 5 , 10 , 'A' , ...);
 
 
 
+																									/* BASE DE DATOS */ 
+/* Tablas */
+
+CREATE TABLE Puntos(id_punto VARCHAR( 20 ) NOT NULL,orden NUMBER( 2 ) NOT NULL , nombre VARCHAR( 10 ) NOT NULL ,tipo CHAR( 1 ) NOT NULL,distancia NUMBER( 8,2 ) NOT NULL ,tiempoLimite NUMBER( 9 ) , carrera VARCHAR2( 20 ) NOT NULL) ;
+CREATE TABLE Segmentos( nombre VARCHAR( 10 )NOT NULL,tipo CHAR( 1 )NOT NULL,puntoInicial VARCHAR( 20 ) NOT NULL, puntoFinal VARCHAR( 20 ) NOT NULL,version NUMBER( 7 ) NOT NULL ) ;
+CREATE TABLE Registros(numero NUMBER( 5 ) NOT NULL, fecha DATE NOT NULL ,tiempo NUMBER( 9 ) NOT NULL ,posicion NUMBER( 5 ) NOT NULL ,revision VARCHAR2( 500 ) ,dificultad CHAR( 1 ) NOT NULL,comentario VARCHAR( 20 ),ciclista NUMBER( 5 ) NOT NULL,segmento VARCHAR2( 10 ) NOT NULL, version NUMBER(5) NOT NULL , detalle XMLTYPE NULL ); 
+CREATE TABLE Carreras(codigo VARCHAR2( 20 ) NOT NULL ,nombre VARCHAR2( 30 ) ,pais VARCHAR2( 15 ) , categoria NUMBER( 1 ) , periodicidad CHAR( 1 ) );
+CREATE TABLE Personas( id NUMBER( 5 ) NOT NULL ,nombres VARCHAR2( 50 ) NOT NULL ) ;
+CREATE TABLE Ciclistas(id NUMBER( 5 ) NOT NULL ,nacimiento DATE NOT NULL ,categoria NUMBER( 1 ) NOT NULL );
+CREATE TABLE Versiones ( id_version NUMBER( 5 ) NOT NULL ,nombre VARCHAR2( 5 ) NOT NULL  ,fecha DATE NOT NULL ,carrera VARCHAR2( 20 ) NOT NULL);
+CREATE TABLE Fotos(direccion VARCHAR2(20)NOT NULL,registro NUMBER(5)NOT NULL);
+
+/* Primarias */
+
+ALTER TABLE Carreras ADD CONSTRAINT PK_CARRERAS PRIMARY KEY(codigo);
+ALTER TABLE Personas ADD CONSTRAINT PK_PERSONAS PRIMARY KEY(id);
+ALTER TABLE Ciclistas ADD CONSTRAINT PK_CICLISTAS PRIMARY KEY(id);
+ALTER TABLE Versiones ADD CONSTRAINT PK_VERSIONES PRIMARY KEY(id_version);
+ALTER TABLE Registros ADD CONSTRAINT PK_REGISTROS PRIMARY KEY(numero);
+ALTER TABLE Segmentos ADD CONSTRAINT PK_SEGMENTOS PRIMARY KEY(nombre);
+ALTER TABLE Puntos ADD CONSTRAINT PK_PUNTOS PRIMARY KEY(id_punto);
+ALTER TABLE Fotos ADD CONSTRAINT PK_FOTOS PRIMARY KEY(direccion);
+
+/* Unicas */ 
+
+ALTER TABLE Registros ADD CONSTRAINT UK_REGISTROS UNIQUE (comentario);
+
+/* Foraneas */
+
+ALTER TABLE Ciclistas ADD CONSTRAINT FK_CICLISTAS_ID FOREIGN KEY(id)REFERENCES Personas(id);
+ALTER TABLE Versiones ADD CONSTRAINT FK_VERSIONES_CARRERA FOREIGN KEY(carrera)REFERENCES Carreras(codigo);
+ALTER TABLE Registros ADD CONSTRAINT FK_REGISTROS_CICLISTA FOREIGN KEY(ciclista)REFERENCES Ciclistas(id);
+ALTER TABLE Registros ADD CONSTRAINT FK_REGISTROS_SEGMENTO FOREIGN KEY(segmento)REFERENCES Segmentos(nombre);
+ALTER TABLE Segmentos ADD CONSTRAINT FK_SEGMENTOS_PUNTOINICIAL FOREIGN KEY(puntoInicial)REFERENCES Puntos(id_punto);
+ALTER TABLE Segmentos ADD CONSTRAINT FK_SEGMENTOS_PUNTOFINAL FOREIGN KEY(puntoFinal)REFERENCES Puntos(id_punto);
+ALTER TABLE Segmentos ADD CONSTRAINT FK_SEGMENTOS_VERSION FOREIGN KEY(version)REFERENCES Versiones(id_version);
+ALTER TABLE Puntos ADD CONSTRAINT FK_PUNTOS_CARRERA FOREIGN KEY(carrera)REFERENCES Carreras(codigo);
+ALTER TABLE Fotos ADD CONSTRAINT FK_FOTOS_REGISTRO FOREIGN KEY(registro)REFERENCES Registros(numero);
