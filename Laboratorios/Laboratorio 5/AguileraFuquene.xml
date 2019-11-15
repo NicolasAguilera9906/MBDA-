@@ -90,6 +90,24 @@
 	
 	*//Course[contains(Description,"system")and @Enrollment>100]/Instructors//Last_Name/text()
 	
+C. Consultas propias
+
+   Todos los titulos de cursos con Enrollment > 100
+   *//Course[@Enrollment > 100]/Title
+   
+   Todos los cursos con algun instructor de apellido Roberts
+   *//Course[Instructors//Last_Name[text()="Roberts"]]/Title/text()
+   
+   Todos los departamentos con mas de 3 cursos
+   *//Department[count(Course)>3]/Title
+   
+   Todos los cursos con prerequisitos
+   *//Course[Prerequisites]/Title
+   
+   Todos los cursos sin un lecturer como instructor
+   *//Course[not (Instructor/Lecturer) ]/Title
+
+	
 D.Esquema
 
 /*<?xml version="1.0"?>
@@ -234,7 +252,7 @@ Introduction to the engineering of computer applications emphasizing in modilar 
 
 PUNTO DOS. (XML – Oracle) AfterRide. TRevisión
 
-1) Proponga la estructura XML necesaria para tener la información de la revisión de un
+2.1 Proponga la estructura XML necesaria para tener la información de la revisión de un
 registro. DTD y ejemplos XML OK y XML NoOK. Explique.
 
 <?xml version="1.0"?>
@@ -360,7 +378,7 @@ registro. DTD y ejemplos XML OK y XML NoOK. Explique.
 	</Registro>
 </Detalles_Registro>
 
-2) Actualice la tabla y los datos adicionados a la base de datos. (PoblandoOK,
+2.2 Actualice la tabla y los datos adicionados a la base de datos. (PoblandoOK,
 ProblandoNoOK)
 
 INSERT INTO Carreras VALUES ( 'C001' , 'Tour de Francia' , 'FRANCIA' ,  1 , 'A');
@@ -586,15 +604,15 @@ GROUP BY v.nombre  ,s.nombre;
 				</Sdescenso>
 			</Secciones>
 			<Clima
-				temperaturaPromedio = "30"
-        sensacionTermica = "20"
-				tipo = "calido">
+				temperaturaPromedio = "40"
+				sensacionTermica = "30"
+				tipo = "frio">
 			</Clima>
 			<Equipo
-				nombre = "INEOS" 
+				nombre = "MOVISTAR" 
 				fechaDeFundacion = "06/10/1950"
 				>
-			<Descripcion> Sin esfuerzo no lograras tus metas </Descripcion>
+			<Descripcion> Movistar Team ganadores </Descripcion>
 			</Equipo>
 		</Revision>
 		<Fotos>
@@ -605,6 +623,177 @@ GROUP BY v.nombre  ,s.nombre;
 	</Registro>
 </Detalles_Registro>
 
+UPDATE REGISTROS SET DETALLE= '<Detalles_Registro>
+	<Registro>
+		<Revision>
+			<Secciones>
+				<Sduras
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sduras>
+				<Sfaciles
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "60"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sfaciles>
+				<Sdescenso
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "70"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sdescenso>
+			</Secciones>
+			<Clima
+				temperaturaPromedio = "50"
+				sensacionTermica = "60"
+				tipo = "frio">
+			</Clima>
+			<Equipo
+				nombre = "Astana" 
+				fechaDeFundacion = "06/10/1950"
+				>
+			<Descripcion> Astana Winners </Descripcion>
+			</Equipo>
+		</Revision>
+		<Fotos>
+			<Foto
+				direccion = "www.google.gif">
+			</Foto>
+		</Fotos>
+	</Registro>
+</Detalles_Registro>') WHERE numero = 1;
+
+UPDATE REGISTROS SET DETALLE= '<Detalles_Registro>
+	<Registro>
+		<Revision>
+			<Secciones>
+				<Sduras
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sduras>
+				<Sfaciles
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sfaciles>
+				<Sdescenso
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sdescenso>
+			</Secciones>
+			<Clima
+				temperaturaPromedio = "70"
+				sensacionTermica = "80"
+				tipo = "calido">
+			</Clima>
+			<Equipo
+				nombre = "TIGO" 
+				fechaDeFundacion = "06/10/1950"
+				>
+			<Descripcion> Ciclismo profesional </Descripcion>
+			</Equipo>
+		</Revision>
+		<Fotos>
+			<Foto
+				direccion = "www.google.gif">
+			</Foto>
+		</Fotos>
+	</Registro>
+</Detalles_Registro>') WHERE numero = 2;
+
+UPDATE REGISTROS SET DETALLE= '<Detalles_Registro>
+	<Registro>
+		<Revision>
+			<Secciones>
+				<Sduras
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "40"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sduras>
+				<Sfaciles
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "50"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sfaciles>
+				<Sdescenso
+					kilometroInicial = "1"
+					kilometrofinal = "100"
+					velocidadPromedio = "50"
+					velocidadMinima = "30"
+					velocidadMaxima  = "120"
+					pulsacionesPromedio = "50"
+					potenciaPromedio = "60" > 
+				</Sdescenso>
+			</Secciones>
+			<Clima
+				temperaturaPromedio = "70"
+				sensacionTermica = "20"
+				tipo = "templado">
+			</Clima>
+			<Equipo
+				nombre = "SKY" 
+				fechaDeFundacion = "06/10/1950"
+				>
+			<Descripcion> Sky team winners </Descripcion>
+			</Equipo>
+		</Revision>
+		<Fotos>
+			<Foto
+				direccion = "www.google.gif">
+			</Foto>
+		</Fotos>
+	</Registro>
+</Detalles_Registro>') WHERE numero = 3;
+
+/* Todos los segmentos registros de clima frio */
+
+SELECT s.nombre as segmento , count (EXTRACTVALUE(r.detalle,'*//Revision/Clima[@tipo = "frio"]/@tipo')) as Numero_ClimasFrios
+FROM  Segmentos s , Registros r
+WHERE s.nombre = r.segmento
+GROUP BY s.nombre;
+
+2.5  
+
+/* Todos los segmentos con secciones duras con una velocidad maxima menor a 100 */
+
+SELECT s.nombre as segmento , count (EXTRACTVALUE(r.detalle,'*//Revision/Secciones/Sduras[@velocidadMaxima < 100]/@velocidadMaxima')) as Numero_Registros
+FROM  Segmentos s , Registros r
+WHERE s.nombre = r.segmento
+GROUP BY s.nombre;
 
 
 
