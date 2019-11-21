@@ -44,13 +44,13 @@ END;
 -- Creacion de tablas--
  
 CREATE TABLE musician(
-    M_NO NUMBER(11) NOT NULL,
-    M_NAME VARCHAR2(20),
-    BORN DATE,
-    DIED DATE,
-    BORN_IN NUMBER(11),
-    LIVING_IN NUMBER(11),
-    DETALLES XMLTYPE NOT NULL
+    m_no NUMBER(11) NOT NULL,
+    m_name VARCHAR2(20),
+    born DATE,
+    died DATE,
+    born_in NUMBER(11),
+    living_in NUMBER(11),
+    detalles XMLTYPE NOT NULL
 );
 CREATE TABLE band(
     band_no NUMBER(11) NOT NULL,
