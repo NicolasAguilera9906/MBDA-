@@ -15,31 +15,966 @@ INSERT INTO place VALUES(9,'Amsterdam','Netherlands');
 -- POBLAR TABLA DE MUSICIAN--
 
 /*SELECT CONCAT('INSERT INTO musician VALUES(',m_no,',',m_name,',','TO_DATE(',REPLACE(born,'-','/'),', yyyy/mm/dd)',',',CASE WHEN died IS NULL THEN 'null'  ELSE CONCAT('TO_DATE(',REPLACE(died,'-','/'),', yyyy/mm/dd)') END, ',',born_in,',',living_in,');') FROM musician*/
-INSERT INTO musician VALUES(1,'Fred Bloggs',TO_DATE('1948/01/02','YYYY/MM/DD'),null,1,2);
-INSERT INTO musician VALUES(2,'John Smith',TO_DATE('1950/03/03','YYYY/MM/DD'),null,3,4);
-INSERT INTO musician VALUES(3,'Helen Smyth',TO_DATE('1948/08/08','YYYY/MM/DD'),null,4,5);
-INSERT INTO musician VALUES(4,'Harriet Smithson',TO_DATE('1909/05/09','YYYY/MM/DD'),TO_DATE('1980/09/20','YYYY/MM/DD'),5,6);
-INSERT INTO musician VALUES(5,'James First',TO_DATE('1965/06/10','YYYY/MM/DD'),null,7,7);
-INSERT INTO musician VALUES(6,'Theo Mengel',TO_DATE('1948/08/12','YYYY/MM/DD'),null,7,1);
-INSERT INTO musician VALUES(7,'Sue Little',TO_DATE('1945/02/21','YYYY/MM/DD'),null,8,9);
-INSERT INTO musician VALUES(8,'Harry Forte',TO_DATE('1951/02/28','YYYY/MM/DD'),null,1,8);
-INSERT INTO musician VALUES(9,'Phil Hot',TO_DATE('1942/06/30','YYYY/MM/DD'),null,2,7);
-INSERT INTO musician VALUES(10,'Jeff Dawn',TO_DATE('1945/12/12','YYYY/MM/DD'),null,3,6);
-INSERT INTO musician VALUES(11,'Rose Spring',TO_DATE('1948/05/25','YYYY/MM/DD'),null,4,5);
-INSERT INTO musician VALUES(12,'Davis Heavan',TO_DATE('1975/10/03','YYYY/MM/DD'),null,5,4);
-INSERT INTO musician VALUES(13,'Lovely Time',TO_DATE('1948/12/28','YYYY/MM/DD'),null,6,3);
-INSERT INTO musician VALUES(14,'Alan Fluff',TO_DATE('1935/01/15','YYYY/MM/DD'),TO_DATE('1997/05/15','YYYY/MM/DD'),7,2);
-INSERT INTO musician VALUES(15,'Tony Smythe',TO_DATE('1932/04/02','YYYY/MM/DD'),null,8,1);
-INSERT INTO musician VALUES(16,'James Quick',TO_DATE('1924/08/08','YYYY/MM/DD'),null,9,2);
-INSERT INTO musician VALUES(17,'Freda Miles',TO_DATE('1920/07/04','YYYY/MM/DD'),null,9,3);
-INSERT INTO musician VALUES(18,'Elsie James',TO_DATE('1947/05/06','YYYY/MM/DD'),null,8,5);
-INSERT INTO musician VALUES(19,'Andy Jones',TO_DATE('1958/10/08','YYYY/MM/DD'),null,7,6);
-INSERT INTO musician VALUES(20,'Louise Simpson',TO_DATE('1948/01/10','YYYY/MM/DD'),TO_DATE('1998/02/11','YYYY/MM/DD'),6,6);
-INSERT INTO musician VALUES(21,'James Steeple',TO_DATE('1947/01/10','YYYY/MM/DD'),null,5,6);
-INSERT INTO musician VALUES(22,'Steven Chaytors',TO_DATE('1956/03/11','YYYY/MM/DD'),null,6,7);
-
-
-
+INSERT INTO musician VALUES ( 1 , 'Fred Bloggs' ,TO_DATE('02/01/1948','DD/MM/YYYY'),NULL, 1 , 2,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "fred.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "Carlos"
+            razon = "SAL">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "SONY">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "besos"
+            año = "1999">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "grammy"
+            año = "2001">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "ECI"
+            año_inicio = "2005"
+            año_fin = "2006"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES ( 2 , 'John Smith' ,TO_DATE('03/03/1950','DD/MM/YYYY'),NULL, 1 , 2,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "John.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "Ernesto"
+            razon = "feliz">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "UNIVERSAL">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "besos"
+            año = "1999">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "platino"
+            año = "2001">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "ECI"
+            año_inicio = "1910"
+            año_fin = "1995"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES ( 3 , 'Helen Smyth' ,TO_DATE('08/08/1948','DD/MM/YYYY'),NULL, 4 , 5,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Helenmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "Ernesto"
+	    razon = "musico">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "musicSony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "amor"
+            año = "1999">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "anglo"
+            año = "2001">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UNacional"
+            año_inicio = "2000"
+            año_fin = "2001"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES ( 4 , 'Harriet Smithson' ,TO_DATE('08/08/1909','DD/MM/YYYY'),TO_DATE('20/09/1980','DD/MM/YYYY'), 5 , 6,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Harrietmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "Harry"
+	    razon = "musico">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Deezer">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "existo"
+            año = "1999">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "tuVoz"
+            año = "2001">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "2000"
+            año_fin = "2006"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES ( 5 , 'James First' ,TO_DATE('10/06/1965','DD/MM/YYYY'),null, 7 , 7,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Jamesmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "juanes"
+	    razon = "cantante">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Spotify">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "castigo"
+            año = "2002">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "bestsong"
+            año = "2005">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1980"
+            año_fin = "1985"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES ( 6 , 'Theo Mengel' ,TO_DATE('12/08/1948','DD/MM/YYYY'),null, 7 , 1,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Theoclassic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "teofilo"
+	    razon = "actor">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Deezer">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "curramba"
+            año = "2005">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "bestcarranga"
+            año = "2010">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UM"
+            año_inicio = "2005"
+            año_fin = "2008"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES ( 7 , 'Sue Little' ,TO_DATE('21/02/1945','DD/MM/YYYY'),null, 8 , 9,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "SueJazz.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "Sue"
+	    razon = "Soccer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "canciondeamor">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "besosusados"
+            año = "2005">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "bestartist"
+            año = "2010">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UM"
+            año_inicio = "2005"
+            año_fin = "2008"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES ( 8 , 'Harry Forte' ,TO_DATE('28/02/1951','DD/MM/YYYY'),null, 1 , 8,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Boleros.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "Sue"
+	    razon = "Artist">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Deezer">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "canciondeamor"
+            año = "2005">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "bestDisc"
+            año = "2009">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2001">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2001">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2001">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES ( 9 , 'Phil Hot' ,TO_DATE('30/06/1942','DD/MM/YYYY'),null, 1 , 8,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(10,'Jeff Dawn',TO_DATE('1945/12/12','YYYY/MM/DD'),null,3,6,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(11,'Rose Spring',TO_DATE('1948/05/25','YYYY/MM/DD'),null,4,5,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(12,'Davis Heavan',TO_DATE('1975/10/03','YYYY/MM/DD'),null,5,4,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(13,'Lovely Time',TO_DATE('1948/12/28','YYYY/MM/DD'),null,6,3,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(14,'Alan Fluff',TO_DATE('1935/01/15','YYYY/MM/DD'),TO_DATE('1997/05/15','YYYY/MM/DD'),7,2,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(15,'Tony Smythe',TO_DATE('1932/04/02','YYYY/MM/DD'),null,8,1,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(16,'James Quick',TO_DATE('1924/08/08','YYYY/MM/DD'),null,9,2,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(17,'Freda Miles',TO_DATE('1920/07/04','YYYY/MM/DD'),null,9,3,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(18,'Elsie James',TO_DATE('1947/05/06','YYYY/MM/DD'),null,8,5,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(19,'Andy Jones',TO_DATE('1958/10/08','YYYY/MM/DD'),null,7,6,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(20,'Louise Simpson',TO_DATE('1948/01/10','YYYY/MM/DD'),TO_DATE('1998/02/11','YYYY/MM/DD'),6,6,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(21,'James Steeple',TO_DATE('1947/01/10','YYYY/MM/DD'),null,5,6,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
+INSERT INTO musician VALUES(22,'Steven Chaytors',TO_DATE('1956/03/11','YYYY/MM/DD'),null,6,7,
+'<?xml version="1.0"?>
+<detalle>
+    <pagina
+        url = "Hotmusic.com">
+    </pagina>
+    <otros_nombres>
+        <otro_nombre
+            nombre = "philip"
+            razon = "Singer">
+        </otro_nombre>
+    </otros_nombres>
+    <sellos>
+        <sello
+            nombre = "Sony">
+        </sello>
+    </sellos>
+    <discos>
+        <disco
+            nombre = "HotSong"
+            año = "2009">
+        </disco>
+    </discos>
+    <premios>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+         <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+        <premio
+            nombre = "BestSongOfTheYear"
+            año = "2012">
+        </premio>
+    </premios>
+    <universidades>
+        <universidad
+            nombre = "UMusical"
+            año_inicio = "1999"
+            año_fin = "2003"
+            titulo_obtenido = "musico">
+        </universidad>
+    </universidades>
+</detalle>');
 
 -- POBLAR TABLA DE COMPOSER--
 
