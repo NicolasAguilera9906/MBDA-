@@ -276,7 +276,7 @@ CREATE OR REPLACE TRIGGER TG_EL_PAGOS
     ON pagos
     FOR EACH ROW
 BEGIN
-    IF (:old.fechaLimite > sysdate and :old.fechaPagada is not null) OR (:old.fechaLimite < sysdate) THEN
+    IF (:old.fechaLimite < sysdate and :old.fechaPagada is not null) OR (:old.fechaLimite > sysdate) THEN
         Raise_application_error(-20021,'El pago no se puede eliminar porque ya fue pagado');
     END IF;
 END;
