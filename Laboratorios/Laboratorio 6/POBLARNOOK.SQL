@@ -1,0 +1,13 @@
+DELETE FROM EsOrganizador;
+DELETE FROM Participa;
+DELETE FROM Versiones;
+DELETE FROM Ciclistas;
+DELETE FROM Empresas;
+DELETE FROM Personas;
+DELETE FROM Miembros; 
+DELETE FROM PropiedadDe;
+DELETE FROM Carreras;
+DELETE FROM Carreras;
+DELETE FROM Registros;
+DELETE FROM Segmentos;
+DELETE FROM Puntos;
