@@ -9,5 +9,17 @@ CREATE OR REPLACE PACKAGE PC_REGISTROS IS
 END PC_REGISTROS;
 /
 
+CREATE OR REPLACE PACKAGE PC_CARRERAS IS 
+    PROCEDURE AD_CARRERA(Xcodigo IN varchar2, Xnombre IN varchar2, Xpais IN varchar2, Xcategoria IN varchar2, Xperiodicidad IN varchar2);
+    PROCEDURE MOD_CARRERA(Xcodigo IN varchar2, Xcategoria IN varchar2);
+    PROCEDURE EL_CARRERA(Xcodigo IN varchar2);
+    FUNCTION  CO_CARRERA(Xcodigo IN varchar2) RETURN SYS_REFCURSOR;
+    PROCEDURE AD_PUNTO(XidPunto IN varchar2, Xnombre IN varchar2, Xdistancia IN number, XtiempoLimite IN number , Xcarrera IN varchar2);
+    PROCEDURE MOD_PUNTO(XidPunto IN varchar2, Xtipo IN varchar2, XtiempoLimite IN number);
+    FUNCTION  CO_PUNTO(XidPunto IN varchar2) RETURN SYS_REFCURSOR;
+    FUNCTION  CO_PUNTO_CARRERA(Xcarrera IN varchar2) RETURN SYS_REFCURSOR;
+END PC_CARRERAS;
+/
+
 
 

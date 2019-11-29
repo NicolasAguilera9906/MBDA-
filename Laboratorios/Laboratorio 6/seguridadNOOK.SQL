@@ -1,0 +1,7 @@
+/*select PA_PARTICIPANTE.CO_MIEMBRO(1) from dual;
+/
+select PA_ADMINISTRADOR.CO_PERSONA FROM DUAL;
+/
+BEGIN
+    PA_PARTICIPANTE.AD_MIEMBRO(10000 ,'CC' ,1014308695 , 'Colombia'  , 'nicolas@gmail.com') ;
+END;*/
