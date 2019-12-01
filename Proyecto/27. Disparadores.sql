@@ -310,3 +310,25 @@ BEGIN
     END IF;
 END;
 /
+--Solo se pueden modificar la cantidad y el precio de un requerimiento
+CREATE OR REPLACE TRIGGER TG_MO_REQUERIMIENTOS
+    BEFORE UPDATE
+        ON requerimientos
+        FOR EACH ROW
+BEGIN
+    IF :old.pedido != :new.pedido OR :old.producto != :new.producto THEN
+        Raise_application_error(-20021,'Solo se pueden modificar la cantidad y el precio de un requerimiento');
+    END IF;
+END;
+/
+--Solo se puede eliminar un requerimiento si su cantidad es igual a 0
+CREATE OR REPLACE TRIGGER TG_EL_REQUERIMIENTOS
+    BEFORE DELETE
+        ON requerimientos
+        FOR EACH ROW
+BEGIN
+    IF :old.cantidad > 0 THEN
+        Raise_application_error(-20021,'Solo se puede eliminar un requerimiento si su cantidad es igual a 0');
+    END IF;
+END;
+/
