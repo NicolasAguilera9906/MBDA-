@@ -97,19 +97,6 @@ WHERE b.idBodega = d.bodega
 GROUP BY b.idBodega , b.ubicacion , u.ciudad,u.departamento
 ORDER BY num_despachos DESC;
 
---Conocer los pedidos por estado de pago
-SELECT 
-    p.idPedido,
-    p.fecha,
-    pa.fechaLimite,
-    pa.fechaPagada,
-     CASE
-        WHEN pa.fechaPagada is not null THEN 'Pagado'
-        ELSE 'No Pagado'
-    END AS estado
-FROM pedidos p , pagos pa
-WHERE p.pago = pa.idPago;
-
                                                     /* CONSULTAS GERENCIALES */
                                                     
 --Conocer el detalle de los pagos recibidos este mes--

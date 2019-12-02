@@ -96,7 +96,7 @@ INSERT INTO clientes values (1014308800, 'Juan', TO_DATE('2019/11/16','YYYY/MM/D
 INSERT INTO pagos (fechaLimite,fechaPagada) values (TO_DATE('2019/11/16','YYYY/MM/DD'),TO_DATE('2019/11/16','YYYY/MM/DD'));
 INSERT INTO pedidos (idPedido ,fecha , cliente , pago) VALUES (1,TO_DATE('2019/11/10','YYYY/MM/DD'), 1014308800 , 2);
 INSERT INTO categorias (idCategoria, nombre, categoria) values ('CK001', 'Randene', null);
-INSERT INTO productos (idProducto, nombre, descripcion, precio, marca, categoria) values ('PK001', 'Allix', 'Mady', 371211342, 'Noëlla', 'CK001');
+INSERT INTO productos  (idProducto, nombre, descripcion, precio, marca, categoria) values ('PK001', 'Allix', 'Mady', 371211342, 'Noëlla', 'CK001');
 BEGIN
     PC_PEDIDO.AD_REQUERIMIENTO('PK001',1,100,10);
 END;
@@ -202,7 +202,7 @@ END;
 
 --Insertar adquisicion
 INSERT INTO categorias (idCategoria, nombre, categoria) values ('TAPA1', 'Randene', null);
-INSERT INTO productos VALUES('PRKK1' ,'zapatp' ,'Bonito' ,10,'Nike','TAPA1');
+INSERT INTO productos (idProducto, nombre, descripcion, precio, marca, categoria) VALUES('PRKK1' ,'zapatp' ,'Bonito' ,10,'Nike','TAPA1');
 BEGIN
     PC_COMPRA.AD_ADQUISICION( 'PRKK1' , 1, 20, 30);
 END;
@@ -274,7 +274,7 @@ INSERT INTO bodegas (idBodega, ubicacion) values ('BO007', 'suba#54');
 INSERT INTO despachos (idDespacho, fechaEnvio, fechaLlegada, bodega) values (1, TO_DATE('1969/05/04','YYYY/MM/DD'),TO_DATE('1895/03/02','YYYY/MM/DD'),'BO007');                                                                    
 INSERT INTO compras VALUES (1,TO_DATE('1895/03/02','YYYY/MM/DD'),10147658394,1);
 INSERT INTO categorias (idCategoria, nombre, categoria) values ('CA010', 'Randene', null);
-INSERT INTO productos VALUES('PRPP1' ,'tennis' ,'Bonito' ,10,'Puma','CA010');
+INSERT INTO productos (idProducto, nombre, descripcion, precio, marca, categoria) VALUES ('PRPP1' ,'tennis' ,'Bonito' ,10,'Puma','CA010');
 INSERT INTO adquisiciones VALUES ('PRPP1' , (SELECT MAX(ROWNUM) FROM compras) , 20, 30);
 SELECT PC_PROVEEDOR.CO_INFO_COMPRASPROVEEDORES FROM DUAL;
 
@@ -303,9 +303,11 @@ END;
 
 --A�adir Almacenamiento
 INSERT INTO categorias VALUES ('CA011', 'Randene', null);
-INSERT INTO productos VALUES('PPKK1' ,'tennis' ,'Bonito' ,10,'Puma','CA011');
+INSERT INTO productos (idProducto, nombre, descripcion, precio, marca, categoria) VALUES('PPKK1' ,'tennis' ,'Bonito' ,10,'Puma','CA011');
+INSERT INTO ubicaciones values ('bus#54','Bogota','Cundinamarca');
+INSERT INTO bodegas (idBodega, ubicacion) values ('BKT09', 'bus#54');
 BEGIN
-    PC_BODEGA.AD_ALMACENAMIENTO('PPKK1','BC001' , 100);
+    PC_BODEGA.AD_ALMACENAMIENTO('PPKK1','BKT09' , 100);
 END;
 /
 --Modificar Almacenamiento
@@ -329,8 +331,9 @@ INSERT INTO despachos (idDespacho, fechaEnvio, fechaLlegada, bodega) values (1, 
 INSERT INTO proveedores (documento, nombre, telefono, correo) VALUES (1014789900 , 'balance' , 2250185 , 'balance@gmail.com');
 INSERT INTO compras VALUES (1,TO_DATE('1895/03/02','YYYY/MM/DD'),1014789900,(SELECT MAX(ROWNUM) FROM despachos));
 INSERT INTO categorias (idCategoria, nombre, categoria) values ('CA020', 'Randene', null);
-INSERT INTO productos VALUES('PRPP2' ,'tennis' ,'Bonito' ,10,'Puma','CA020');
+INSERT INTO productos (idProducto, nombre, descripcion, precio, marca, categoria) VALUES ('PRPP2' ,'tennis' ,'Bonito' ,10,'Puma','CA020');
 INSERT INTO adquisiciones VALUES ('PRPP2' , (SELECT MAX(ROWNUM) FROM compras) , 20, 30);
 SELECT PC_BODEGA.CO_CAPACIDAD_BODEGAS FROM DUAL;
 
+--Numero de despachos recibidos por esa bodega
 SELECT PC_BODEGA.CO_DESPACHOSBODEGA('B15OK') FROM DUAL;

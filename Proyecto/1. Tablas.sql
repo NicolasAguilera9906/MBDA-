@@ -82,7 +82,8 @@ nombre VARCHAR2(25)NOT NULL,
 descripcion VARCHAR2(50),
 precio NUMBER(10)NOT NULL,
 marca VARCHAR2(25)NOT NULL,
-categoria VARCHAR2(5)
+categoria VARCHAR2(5),
+detalles XMLTYPE
 );
 
 CREATE TABLE categorias(
