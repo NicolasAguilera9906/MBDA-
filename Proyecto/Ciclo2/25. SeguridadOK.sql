@@ -1,0 +1,17 @@
+--Consultar los registros de los clientes
+SELECT PA_GERENTE.CO_CLIENTES_MASREGISTRADOS FROM DUAL;
+
+--Añadir Evento
+EXECUTE PA_JEFEPUBLICIDAD.AD_EVENTO('E700',NULL,'A','Carrera de caballos' , 'Muy divertida');
+
+--Modificar Evento
+EXECUTE PA_JEFEPUBLICIDAD.MO_EVENTO('E700', 'S', NULL);
+
+--Add Ubicacion
+EXECUTE PA_JEFELOGISTICA.AD_UBICACION('X#4445', 'Pereira', 'Valle');
+
+--Add Sede
+EXECUTE PA_JEFELOGISTICA.AD_SEDE('S990', 'Pista CO', 'X#4445');
+
+--Consultar Sede
+SELECT PA_JEFELOGISTICA.CO_SEDE('S990') FROM DUAL;

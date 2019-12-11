@@ -122,3 +122,53 @@ CREATE OR REPLACE PACKAGE BODY PA_JEFEPUBLICIDAD IS
 	END;
 END PA_JEFEPUBLICIDAD;            
 /
+
+
+CREATE OR REPLACE PACKAGE BODY PA_CLIENTE IS
+    PROCEDURE AD_CLIENTE(Xdocumento IN number, Xnombres IN varchar2, XfechaNacimiento IN date, Xubicacion IN varchar2 , Xtelefono IN number, Xcorreo IN varchar2) IS
+	BEGIN
+        PC_CLIENTE.AD_CLIENTE(Xdocumento , Xnombres , XfechaNacimiento , Xubicacion  , Xtelefono , Xcorreo);
+	END;
+    PROCEDURE MOD_CLIENTE(Xdocumento IN NUMBER , Xnombres IN varchar2, Xtelefono IN number, Xcorreo IN varchar2) IS
+	BEGIN
+        PC_CLIENTE.MOD_CLIENTE(Xdocumento , Xnombres , Xtelefono , Xcorreo);
+	END;
+    PROCEDURE EL_CLIENTE(Xdocumento IN number) IS
+	BEGIN
+        PC_CLIENTE.EL_CLIENTE(Xdocumento);
+	END;
+    FUNCTION CO_CLIENTE(Xdocumento IN number) RETURN SYS_REFCURSOR IS CLIENTE SYS_REFCURSOR;
+	BEGIN 
+        CLIENTE := PC_CLIENTE.CO_CLIENTE(Xdocumento);
+		RETURN CLIENTE;
+	END;
+    PROCEDURE AD_REGISTRO(Xversion IN varchar2, Xcliente IN number, XfechaRegistro IN date, XhoraRegistro IN number, Xprecio IN number) IS
+	BEGIN
+        PC_CLIENTE.AD_REGISTRO(Xversion , Xcliente, XfechaRegistro, XhoraRegistro, Xprecio);
+	END;
+    PROCEDURE EL_REGISTRO(Xversion IN varchar2, Xcliente IN varchar2) IS
+	BEGIN
+        PC_CLIENTE.EL_REGISTRO(Xversion , Xcliente);
+	END;
+    FUNCTION CO_REGISTRO(Xversion IN varchar2, Xcliente IN varchar2) RETURN SYS_REFCURSOR IS REGISTRO SYS_REFCURSOR;
+	BEGIN 
+        REGISTRO:= PC_CLIENTE.CO_REGISTRO(Xversion , Xcliente);
+		RETURN REGISTRO;
+	END;
+    FUNCTION CO_VERSION_CIUDAD(Xciudad IN varchar2) RETURN SYS_REFCURSOR IS VERSIONES SYS_REFCURSOR;
+    BEGIN 
+		VERSIONES :=  PC_VERSION.CO_VERSION_CIUDAD(Xciudad);
+		RETURN VERSIONES;
+	END;
+    FUNCTION CO_VERSION_FECHA(Xfecha IN DATE) RETURN SYS_REFCURSOR IS VERSIONES SYS_REFCURSOR;
+    BEGIN 
+		VERSIONES := PC_VERSION.CO_VERSION_FECHA(Xfecha);
+		RETURN VERSIONES;
+	END;
+    FUNCTION CO_INFO_VERSIONES  RETURN SYS_REFCURSOR IS VERSIONES SYS_REFCURSOR;
+    BEGIN 
+		VERSIONES := PC_VERSION.CO_INFO_VERSIONES;
+		RETURN VERSIONES;
+	END;
+END PA_CLIENTE;            
+/

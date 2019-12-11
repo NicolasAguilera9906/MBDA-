@@ -57,6 +57,7 @@ CREATE OR REPLACE view Eventos_VersionesRealizadas AS
     GROUP BY e.nombre
     ORDER BY num_versiones;
 
+--Detalle de las versiones
 CREATE OR REPLACE VIEW Info_versiones AS
     SELECT 
         e.nombre as evento , 
