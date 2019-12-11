@@ -60,13 +60,13 @@ CREATE TABLE Versiones(
 idVersion NUMBER (5)NOT NULL ,
 fechaInicio DATE NOT NULL ,
 fechaFin DATE  NOT NULL, 
-sede VARCHAR2 (5) NOT NULL ,
+sede VARCHAR2 (5) ,
 evento VARCHAR2 (5) NOT NULL
 );
 
 CREATE TABLE Fotos (
 url VARCHAR2 (50) NOT NULL ,
-version VARCHAR2 (5)NOT NULL
+version NUMBER (5)NOT NULL
 );
 
 
@@ -85,7 +85,7 @@ descripcion VARCHAR2 (500) NOT NULL
 );
 
 CREATE TABLE Registros (
-version VARCHAR2(5) NOT NULL,
+version NUMBER(5) NOT NULL,
 cliente NUMBER(15) NOT NULL,
 fechaRegistro DATE NOT NULL,
 horaRegistro NUMBER (4) NOT NULL ,
