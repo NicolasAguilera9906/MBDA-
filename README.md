@@ -3,6 +3,6 @@
 
 ### Estudiantes
 
-  [[Miguel Angel Fuquene](https://github.com/MiguelFuquene1024)
+  [Miguel Angel Fuquene](https://github.com/MiguelFuquene1024)
   
-  [[Nicolás Aguilera Contreras](https://github.com/NicolasAguilera9906)
+  [Nicolás Aguilera Contreras](https://github.com/NicolasAguilera9906)
